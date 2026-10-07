@@ -179,9 +179,12 @@
   });
 
   // ── 전환 기록: 네이버 예약 · 카카오톡 · 전화 버튼 클릭 ──
-  // GA4 이벤트 이름: book_naver / contact_kakao / contact_phone (위치는 section 값으로 구분)
+  // GA4 이벤트 이름: book_naver / contact_kakao / contact_phone (위치는 section 값으로 구분). 메타 픽셀에도 함께 보낸다.
+  // 메타 픽셀 표준 이벤트: 네이버 예약 = Schedule, 카카오톡·전화 = Contact
+  var META = { book_naver: 'Schedule', contact_kakao: 'Contact', contact_phone: 'Contact' };
   function track(name, params) {
     if (typeof window.gtag === 'function') window.gtag('event', name, params);
+    if (typeof window.fbq === 'function' && META[name]) window.fbq('track', META[name], { content_name: name, content_category: params.section });
   }
   document.addEventListener('click', function (e) {
     var a = e.target.closest && e.target.closest('a[href]');
