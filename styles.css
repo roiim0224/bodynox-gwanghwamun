@@ -1,0 +1,17 @@
+/* BODYNOX 브랜드 토큰 — 브랜드 가이드(BRAND BASICS V2) 기준 */
+:root{
+  --magenta-500:#E71873; /* 유일한 액센트: CTA, 룰, 포인트. 화면 면적 5% 이하 */
+  --magenta-400:#ED4C92; /* 다크 배경 위 마젠타 텍스트 */
+  --magenta-600:#C21063; /* 밝은 배경 위 마젠타 텍스트 */
+  --ink-900:#231815;     /* 스튜디오 배경 */
+  --ink-700:#3D3334;     /* 구분선 */
+  --paper-200:#F4F1EA;   /* 진단·리포트 배경 */
+}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--ink-900)}
+a{color:var(--magenta-400)}a:hover{color:#FFFFFF}
+button:focus-visible,a:focus-visible{outline:2px solid var(--magenta-400);outline-offset:2px}
+[hidden]{display:none !important}
+summary::-webkit-details-marker{display:none}
+details[open] .sched-more{visibility:hidden}
+@media (max-width:720px){.kakao-qr{display:none !important}}

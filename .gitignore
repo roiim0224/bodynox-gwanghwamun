@@ -1,0 +1,7 @@
+# 공개 사이트에 올리지 않는 내부 파일
+CLAUDE.md
+README.md
+*.xlsx
+*.numbers
+*.pages
+.DS_Store
