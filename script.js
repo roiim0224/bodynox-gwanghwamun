@@ -178,6 +178,22 @@
     v.addEventListener('click', toggle);
   });
 
+  // ── 전환 기록: 네이버 예약 · 카카오톡 · 전화 버튼 클릭 ──
+  // GA4 이벤트 이름: book_naver / contact_kakao / contact_phone (위치는 section 값으로 구분)
+  function track(name, params) {
+    if (typeof window.gtag === 'function') window.gtag('event', name, params);
+  }
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[href]');
+    if (!a) return;
+    var href = a.getAttribute('href'), sec = a.closest('section, header, footer');
+    var where = sec ? (sec.id || sec.tagName.toLowerCase()) : 'page';
+    var name = /map\.naver\.com|booking\.naver\.com/.test(href) && /ticket/.test(href) ? 'book_naver'
+      : /open\.kakao\.com|pf\.kakao\.com/.test(href) ? 'contact_kakao'
+      : /^tel:/.test(href) ? 'contact_phone' : null;
+    if (name) track(name, { section: where, link_text: (a.textContent || '').trim().slice(0, 40) });
+  });
+
   loadSchedule();
   renderBooking();
 })();
