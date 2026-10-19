@@ -111,9 +111,13 @@
       var sum = el('summary', 'list-style:none;cursor:pointer;min-height:64px;padding:16px 4px;display:grid;grid-template-columns:96px 1fr auto;gap:8px 16px;align-items:center');
       sum.appendChild(el('span', "font-family:'Jost',sans-serif;font-size:17px;font-weight:500", x.start + (x.end ? '–' + x.end : '')));
       var title = el('span', 'display:flex;flex-direction:column;gap:2px');
-      // 수업명이 "영역 – 특징" 형식이라 영역(테마)은 따로 적지 않는다.
-      title.appendChild(el('span', 'font-size:16px;font-weight:500;word-break:keep-all', x.name));
-      if (x.teacher) title.appendChild(el('span', "font-family:'Jost',sans-serif;font-size:12px;letter-spacing:0.12em;color:#A39895", x.teacher));
+      // "BLAZ - " 로 시작하는 수업명은 앞부분을 떼고 작은 BLAZ 표시로 보여 준다.
+      var blaz = /^BLAZ\s*-\s*/i.test(x.name), nm = x.name.replace(/^BLAZ\s*-\s*/i, '');
+      var line = el('span', 'font-size:16px;font-weight:500;word-break:keep-all', nm);
+      if (blaz) line.appendChild(el('span', "margin-left:8px;font-family:'Jost',sans-serif;font-size:10px;letter-spacing:0.14em;color:#ED4C92;vertical-align:2px", 'BLAZ'));
+      title.appendChild(line);
+      // 영역(테마) · 강사
+      title.appendChild(el('span', 'font-size:12px;color:#A39895', [x.theme, x.teacher].filter(Boolean).join(' · ')));
       sum.appendChild(title);
       var more = el('span', 'font-size:13px;color:#A39895', x.desc ? '설명 +' : ''); more.className = 'sched-more';
       sum.appendChild(more);
