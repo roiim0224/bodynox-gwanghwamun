@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<!-- Google tag (gtag.js) · GA4 바디녹스 광화문 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MQ97ETPTJG"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-MQ97ETPTJG');
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>수업 만족도 설문 · BODYNOX 광화문</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600&family=Noto+Sans+KR:wght@300;400;500;700&display=swap">
+<link rel="stylesheet" href="styles.css?v=3">
+<style>
+  .sv { background: #231815; color: #FFFFFF; font-family: 'Noto Sans KR', sans-serif; font-size: 16px; line-height: 1.65; min-height: 100vh }
+  .sv-wrap { max-width: 640px; margin: 0 auto; padding: 32px 20px 80px }
+  .sv-q { border-top: 1px solid #3D3334; padding: 28px 0 }
+  .sv-q h2 { margin: 0; font-size: 17px; font-weight: 500 }
+  .sv-q .sv-help { margin: 6px 0 0; font-size: 14px; color: #A39895 }
+  .sv-req { margin-left: 6px; font-size: 12px; color: #ED4C92 }
+  .sv-opts { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px }
+  .sv-opt { min-height: 44px; min-width: 44px; padding: 0 16px; border: 1px solid #5E5452; border-radius: 999px; background: transparent; color: #FFFFFF; font: inherit; font-size: 15px; cursor: pointer }
+  .sv-opt[aria-pressed="true"] { border-color: #E71873; background: rgba(231,24,115,0.14) }
+  .sv-scale { display: grid; grid-template-columns: repeat(11, 1fr); gap: 4px; margin-top: 16px }
+  .sv-scale .sv-opt { padding: 0; min-width: 0; border-radius: 10px; font-family: 'Jost', sans-serif }
+  .sv-ends { display: flex; justify-content: space-between; margin-top: 8px; font-size: 13px; color: #A39895 }
+  .sv-text { width: 100%; box-sizing: border-box; margin-top: 16px; padding: 12px 14px; border: 1px solid #5E5452; border-radius: 12px; background: transparent; color: #FFFFFF; font: inherit; font-size: 15px; resize: vertical }
+  .sv-text:focus, .sv-opt:focus-visible, .sv-submit:focus-visible { outline: 2px solid #ED4C92; outline-offset: 2px }
+  .sv-count { margin-top: 6px; font-size: 12px; color: #A39895; text-align: right }
+  .sv-submit { width: 100%; min-height: 52px; margin-top: 8px; border: 0; border-radius: 999px; background: #E71873; color: #FFFFFF; font: inherit; font-size: 16px; font-weight: 500; cursor: pointer }
+  .sv-submit[disabled] { opacity: .5; cursor: default }
+  .sv-msg { margin: 16px 0 0; font-size: 14px; color: #ED4C92; min-height: 1em }
+  .sv-hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden }
+  @media (max-width: 420px) { .sv-scale { grid-template-columns: repeat(6, 1fr) } }
+</style>
+</head>
+<body>
+<div class="sv">
+<div class="sv-wrap">
+
+<header style="display: flex; justify-content: space-between; align-items: center; min-height: 44px">
+<a href="/" aria-label="BODYNOX 광화문 홈"><img src="assets/logo-ink.png" alt="BODYNOX" style="height: 22px; width: auto; display: block"></a>
+<span style="font-family: 'Jost', sans-serif; font-size: 12px; letter-spacing: 0.24em; color: #A39895">GWANGHWAMUN</span>
+</header>
+
+<section id="sv-form-wrap">
+<div style="margin-top: 48px; font-family: 'Jost', sans-serif; font-size: 13px; letter-spacing: 0.24em; color: #ED4C92">CLASS FEEDBACK</div>
+<h1 style="margin: 16px 0 0; font-size: 28px; font-weight: 300; line-height: 1.35">오늘 수업, 어떠셨나요?</h1>
+<p style="margin: 14px 0 0; color: #C9C1BE">1분이면 끝나는 짧은 설문입니다. 이름이나 연락처는 묻지 않아요. 남겨 주신 의견은 수업과 시간표를 고치는 데만 씁니다.</p>
+
+<form id="sv-form" novalidate style="margin-top: 32px">
+
+<div class="sv-q" role="group" aria-labelledby="q1-t">
+<h2 id="q1-t">다음에도 이 수업을 다시 듣고 싶은 정도는요?<span class="sv-req">필수</span></h2>
+<p class="sv-help">0은 전혀 아니다, 10은 꼭 다시 듣고 싶다입니다.</p>
+<div class="sv-scale" id="q1"></div>
+<div class="sv-ends"><span>전혀 아니다</span><span>꼭 다시</span></div>
+</div>
+
+<div class="sv-q" role="group" aria-labelledby="q2-t">
+<h2 id="q2-t">오늘 들으신 수업 시간은요?<span class="sv-req">필수</span></h2>
+<div class="sv-opts" id="q2"></div>
+</div>
+
+<div class="sv-q" role="group" aria-labelledby="q3-t">
+<h2 id="q3-t">좋았던 점을 골라 주세요</h2>
+<p class="sv-help">여러 개 골라도 됩니다.</p>
+<div class="sv-opts" id="q3"></div>
+</div>
+
+<div class="sv-q" role="group" aria-labelledby="q4-t">
+<h2 id="q4-t">아쉬웠던 점이 있었나요?</h2>
+<p class="sv-help">여러 개 골라도 됩니다.</p>
+<div class="sv-opts" id="q4"></div>
+</div>
+
+<div class="sv-q">
+<h2><label for="q5">강사나 센터에 하고 싶은 말이 있다면 적어 주세요</label></h2>
+<textarea id="q5" class="sv-text" rows="4" maxlength="500" placeholder="자유롭게 적어 주세요 (선택)"></textarea>
+<div class="sv-count"><span id="q5-n">0</span> / 500</div>
+</div>
+
+<div class="sv-hp" aria-hidden="true"><label>웹사이트<input type="text" id="website" tabindex="-1" autocomplete="off"></label></div>
+
+<button type="submit" class="sv-submit" id="sv-submit">설문 보내기</button>
+<p class="sv-msg" id="sv-msg" role="status" aria-live="polite"></p>
+</form>
+</section>
+
+<section id="sv-done" hidden style="margin-top: 72px; text-align: center">
+<div style="font-family: 'Jost', sans-serif; font-size: 13px; letter-spacing: 0.24em; color: #ED4C92">THANK YOU</div>
+<h1 style="margin: 16px 0 0; font-size: 28px; font-weight: 300; line-height: 1.35">소중한 의견 고맙습니다</h1>
+<p style="margin: 14px 0 0; color: #C9C1BE">남겨 주신 내용은 다음 수업과 시간표에 반영하겠습니다.</p>
+<a href="/" style="display: inline-flex; align-items: center; justify-content: center; min-height: 52px; margin-top: 32px; padding: 0 30px; border-radius: 999px; border: 1px solid #5E5452; color: #FFFFFF; text-decoration: none">홈페이지로 가기</a>
+</section>
+
+</div>
+</div>
+
+<script>
+// 수업 만족도 설문. 응답은 구글 시트(Apps Script 웹 앱)로 보낸다.
+(function () {
+  // Apps Script 웹 앱 URL. 배포 후 나오는 주소를 따옴표 안에 붙여 넣는다.
+  var ENDPOINT = 'https://script.google.com/macros/s/AKfycbynpQeOaJ6pZnuoo_M2RoKlBHVJABTJWwE-L7GAwus3p9vJJeD_sylbBseCrSyWM_sl9w/exec';
+
+  var SLOTS = ['06:30', '07:30', '12:00', '17:30', '18:30', '19:30', '토 11:00'];
+  var GOOD = ['강사 설명·자세 교정', '수업 구성', '운동 강도', '음악·분위기', '기구·시설', '함께하는 분위기'];
+  var BAD = ['운동 강도', '설명·자세 교정', '수업 인원', '시간대', '기구·시설', '특별히 없음'];
+  var state = { q1: null, q2: null, q3: [], q4: [] };
+
+  function btn(box, label, pressed, onClick) {
+    var b = document.createElement('button');
+    b.type = 'button'; b.className = 'sv-opt'; b.textContent = label;
+    b.setAttribute('aria-pressed', pressed ? 'true' : 'false');
+    b.addEventListener('click', onClick);
+    box.appendChild(b);
+  }
+  function single(id, items, key) {
+    var box = document.getElementById(id); box.textContent = '';
+    items.forEach(function (v) {
+      btn(box, String(v), state[key] === v, function () { state[key] = v; single(id, items, key); });
+    });
+  }
+  function multi(id, items, key) {
+    var box = document.getElementById(id); box.textContent = '';
+    items.forEach(function (v) {
+      var on = state[key].indexOf(v) >= 0;
+      btn(box, v, on, function () {
+        state[key] = on ? state[key].filter(function (x) { return x !== v; }) : state[key].concat(v);
+        multi(id, items, key);
+      });
+    });
+  }
+  single('q1', [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 'q1');
+  single('q2', SLOTS, 'q2');
+  multi('q3', GOOD, 'q3');
+  multi('q4', BAD, 'q4');
+
+  var q5 = document.getElementById('q5'), q5n = document.getElementById('q5-n');
+  q5.addEventListener('input', function () { q5n.textContent = q5.value.length; });
+
+  // 유입경로: 주소 뒤 ?from=qr 처럼 붙인 값 (없으면 web)
+  var from = (new URLSearchParams(location.search).get('from') || 'web').slice(0, 20);
+
+  var form = document.getElementById('sv-form'), submit = document.getElementById('sv-submit'), msg = document.getElementById('sv-msg');
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (state.q1 === null) { msg.textContent = '첫 번째 질문(다시 듣고 싶은 정도)을 골라 주세요.'; return; }
+    if (state.q2 === null) { msg.textContent = '두 번째 질문(수업 시간)을 골라 주세요.'; return; }
+    if (!ENDPOINT) { msg.textContent = '설문 접수를 준비하고 있어요. 잠시 뒤에 다시 시도해 주세요.'; return; }
+    var data = {
+      q1: state.q1, q2: state.q2,
+      q3: state.q3.join(', '), q4: state.q4.join(', '), q5: q5.value,
+      from: from, website: document.getElementById('website').value
+    };
+    submit.disabled = true; msg.textContent = '보내는 중…';
+    // text/plain 으로 보내야 브라우저 사전 확인(preflight) 없이 Apps Script에 바로 닿는다
+    fetch(ENDPOINT, { method: 'POST', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(data) })
+      .then(function (r) { return r.text(); })
+      .then(function (t) {
+        if (t.trim() !== 'ok') throw new Error(t);
+        if (typeof window.gtag === 'function') window.gtag('event', 'survey_submit', { score: state.q1, slot: state.q2, from: from });
+        document.getElementById('sv-form-wrap').hidden = true;
+        document.getElementById('sv-done').hidden = false;
+        window.scrollTo(0, 0);
+      })
+      .catch(function () {
+        submit.disabled = false;
+        msg.textContent = '보내지 못했어요. 인터넷 연결을 확인하고 다시 눌러 주세요.';
+      });
+  });
+})();
+</script>
+</body>
+</html>
