@@ -52,10 +52,10 @@
   function fromSheet(text) {
     var rows = parseCSV(text), head = rows.shift() || [];
     function col(name) { return head.map(function (h) { return h.trim(); }).indexOf(name); }
-    var c = { date: col('날짜'), start: col('시작'), end: col('종료'), theme: col('테마'), name: col('수업명'), desc: col('수업 설명(자동)'), teacher: col('강사') };
+    var c = { date: col('날짜'), start: col('시작'), end: col('종료'), theme: col('테마'), name: col('수업명'), desc: col('수업 설명(자동)'), teacher: col('강사'), point: col('포인트') };
     return rows.map(function (r) {
       function v(k) { return c[k] < 0 ? '' : (r[c[k]] || '').trim(); }
-      return { date: v('date'), start: v('start'), end: v('end'), theme: v('theme'), name: v('name'), desc: v('desc'), teacher: v('teacher') };
+      return { date: v('date'), start: v('start'), end: v('end'), theme: v('theme'), name: v('name'), desc: v('desc'), teacher: v('teacher'), point: v('point') };
     }).filter(function (x) { return /^\d{4}-\d{2}-\d{2}$/.test(x.date) && x.start && x.name; });
   }
   function toDate(s) { var p = s.split('-'); return new Date(+p[0], +p[1] - 1, +p[2]); }
@@ -113,9 +113,10 @@
       var title = el('span', 'display:flex;flex-direction:column;gap:2px');
       // "BLAZ - " 로 시작하는 수업명은 앞부분을 떼고 작은 BLAZ 표시로 보여 준다.
       var blaz = /^BLAZ\s*-\s*/i.test(x.name), nm = x.name.replace(/^BLAZ\s*-\s*/i, '');
-      // 수업명 앞에 영역(테마)을 붙인다. 예: "체형교정 : ISO-FIT"
+      // 수업명 앞에 영역(테마), 뒤에 포인트를 붙인다. 예: "체형교정 : ISO-FIT · 상체 정렬"
       var line = el('span', 'font-size:16px;font-weight:500;word-break:keep-all', (x.theme ? x.theme + ' : ' : '') + nm);
       if (blaz) line.appendChild(el('span', "margin-left:8px;font-family:'Jost',sans-serif;font-size:10px;letter-spacing:0.14em;color:#ED4C92;vertical-align:2px", 'BLAZ'));
+      if (x.point) line.appendChild(document.createTextNode(' · ' + x.point));
       title.appendChild(line);
       if (x.teacher) title.appendChild(el('span', "font-family:'Jost',sans-serif;font-size:12px;letter-spacing:0.12em;color:#A39895", x.teacher));
       sum.appendChild(title);
