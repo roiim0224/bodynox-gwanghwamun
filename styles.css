@@ -15,3 +15,28 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--magenta-400);outlin
 summary::-webkit-details-marker{display:none}
 details[open] .sched-more{visibility:hidden}
 @media (max-width:720px){.kakao-qr{display:none !important}}
+
+/* 강사 소개 (#coaches) — 휴대폰은 옆으로 넘기는 카드, PC는 5열 */
+.coach-list{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:16px;margin-top:40px;align-items:start}
+.coach{border:1px solid var(--ink-700);border-radius:16px;overflow:hidden;background:#2B2120;scroll-margin-top:96px}
+.coach:target{border-color:var(--magenta-400)}
+.coach img{display:block;width:100%;height:auto;aspect-ratio:720/942;object-fit:cover;background:#D4C4DA}
+.coach-body{padding:18px 18px 8px}
+.coach-name{font-size:18px;color:#FFFFFF}
+.coach-name strong{font-weight:500}
+.coach-name span{font-size:14px;color:#A39895}
+.coach-en{margin-top:2px;font-family:'Jost',sans-serif;font-size:12px;letter-spacing:.2em;color:var(--magenta-400)}
+.coach-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.coach-tag{font-size:12px;line-height:1.4;padding:4px 10px;border:1px solid #5E5452;border-radius:999px;color:#C9C1BE}
+.coach-more{margin-top:8px;border-top:1px solid var(--ink-700)}
+.coach-more summary{list-style:none;cursor:pointer;min-height:44px;display:flex;align-items:center;justify-content:space-between;font-size:14px;color:#FFFFFF}
+.coach-more summary::after{content:'+';font-family:'Jost',sans-serif;font-size:18px;color:#A39895}
+.coach-more[open] summary::after{content:'−'}
+.coach-group{padding:4px 0 12px}
+.coach-group-t{font-size:12px;letter-spacing:.08em;color:#A39895;margin-bottom:6px}
+.coach-group ul{margin:0;padding:0 0 0 16px;font-size:13px;line-height:1.7;color:#E9E3E1}
+.sched-coach{color:inherit;text-decoration:underline;text-decoration-color:#5E5452;text-underline-offset:3px;display:inline-flex;align-items:center;min-height:32px}
+@media (max-width:1024px){
+  .coach-list{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;margin:40px -24px 0;padding:0 24px 8px;-webkit-overflow-scrolling:touch}
+  .coach{flex:0 0 min(78%,300px);scroll-snap-align:start}
+}

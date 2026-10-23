@@ -5,6 +5,8 @@
   // 비어 있거나 못 읽으면 assets/data/schedule-fallback.js 데이터를 쓴다.
   var SHEET_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSwCMATBARdnl8LRth74qt85AwzxrDImwlK9-njSuQk7za9piiVH188-rLOra_eFzlIEHUf8vkebGaq/pub?gid=1871967222&single=true&output=csv';
   var WEEKDAYS = ['일', '월', '화', '수', '목', '금', '토'];
+  // 시트 강사 칸(O열 강사명) → 강사 소개 카드 id (index.html #coach-…)
+  var COACH_IDS = { 'MINA': 'mina', 'CHOHEE': 'chohee', 'SU-AH': 'sua', 'DORIS': 'doris', 'ROI': 'roi' };
 
   var SLOTS = [
     { id: 'am', name: '출근 전', sub: '06:30 · 07:30' },
@@ -118,7 +120,13 @@
       if (blaz) line.appendChild(el('span', "margin-left:8px;font-family:'Jost',sans-serif;font-size:10px;letter-spacing:0.14em;color:#ED4C92;vertical-align:2px", 'BLAZ'));
       if (x.point) line.appendChild(document.createTextNode(' · ' + x.point));
       title.appendChild(line);
-      if (x.teacher) title.appendChild(el('span', "font-family:'Jost',sans-serif;font-size:12px;letter-spacing:0.12em;color:#A39895", x.teacher));
+      if (x.teacher) {
+        // 강사 소개 카드가 있는 강사는 이름을 누르면 그 카드로 이동한다.
+        var cid = COACH_IDS[x.teacher.toUpperCase()];
+        var who = el(cid ? 'a' : 'span', "font-family:'Jost',sans-serif;font-size:12px;letter-spacing:0.12em;color:#A39895", x.teacher);
+        if (cid) { who.href = '#coach-' + cid; who.className = 'sched-coach'; }
+        title.appendChild(who);
+      }
       sum.appendChild(title);
       var more = el('span', 'font-size:13px;color:#A39895', x.desc ? '설명 +' : ''); more.className = 'sched-more';
       sum.appendChild(more);
